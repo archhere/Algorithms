@@ -93,3 +93,41 @@ var addTwoNumbers = function(l1, l2) {
 // ---------------------------------------------------------------------
 // Solution 2
 // ---------------------------------------------------------------------
+
+function ListNode(val) {
+    this.val = val;
+    this.next = null;
+ }
+
+ var addTwoNumbers = function(l1, l2) {
+
+   let final  = new ListNode(0);
+   let result = final;
+   let carryOver = 0;
+   while (l1 !== null || l2 !== null) {
+     let x;
+     let y;
+     if (l1 !== null) {
+       x = l1.val;
+     } else x = 0;
+     if (l2 !== null)  {
+       y = l2.val;
+     } else y = 0;
+
+     let sum = carryOver + x + y;
+
+     carryOver = Math.floor(sum / 10);
+     result.next = new ListNode(sum % 10);
+     result = result.next;
+       
+     if (l1 != null) l1 = l1.next;
+     if (l2 != null) l2 = l2.next;
+
+   }
+
+   if (carryOver > 0) {
+       result.next = new ListNode(carryOver);
+   }
+   return final.next;
+
+ };
