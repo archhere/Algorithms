@@ -203,8 +203,11 @@ var lengthOfLongestSubstring = function(s) {
 
 function sym(args) {
   let resultHash = {};
+
+  //converted arguments into an array
   let array = Array.from(arguments);
-  console.log(array);
+
+  // Got unique elements in each sub array and then put them in a counter hash
   array.forEach((arr)=> {
     let uniqueArr = [];
     arr.forEach((el)=>{
@@ -222,6 +225,19 @@ function sym(args) {
       }
     });
   });
+
+  // Got array of all keys and then filtered based on values for each keys in the resultHash
   let result = Object.keys(resultHash);
   return  result.filter(el => resultHash[el]%2 !== 0).map(el => parseInt(el));
 }
+
+// ------------------------------------------------------------------------
+
+// Compare and update the inventory stored in a 2D array against a second
+// 2D array of a fresh delivery. Update the current existing inventory item
+// quantities (in arr1). If an item cannot be found, add the new item and
+// quantity into the inventory array. The returned inventory array should be
+// in alphabetical order by item.
+//
+// Remember to use Read-Search-Ask if you get stuck. Try to pair program.
+// Write your own code.
