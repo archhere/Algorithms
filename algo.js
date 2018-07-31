@@ -241,3 +241,32 @@ function sym(args) {
 //
 // Remember to use Read-Search-Ask if you get stuck. Try to pair program.
 // Write your own code.
+
+
+function updateInventory(arr1, arr2) {
+    // All inventory must be accounted for or you're fired!
+    let arrayHash = {};
+
+    arr1.forEach((el,idx) => {
+      arrayHash[el[1]] = [el[0],idx,'array1'];
+    });
+
+    arr2.forEach((el,idx)=> {
+      if (typeof arrayHash[el[1]]=== 'undefined'){
+        arrayHash[el[1]] = [el[0],arr1.length,'array2'];
+        arr1.push(el);
+      } else if(arrayHash[el[1]][2]=== 'array1'){
+        let index = arrayHash[el[1]][1];
+        let prevVal = arr1[index][0];
+        arrayHash[el[1]][2] = 'array2';
+        arr1[index] = [prevVal+el[0],el[1]];
+      } else if(arrayHash[el[1]][2]=== 'array2'){
+        let index = arrayHash[el[1]][1];
+        let prevVal = arr1[index][0];
+        let newVal = el[0];
+        arr1[index] = [prevVal+newVal,el[1]];
+      }
+    });
+    return arr1.sort((previous, next) => (previous[1] > [next[1]]) ? 1 : -1);
+
+}
