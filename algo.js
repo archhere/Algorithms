@@ -119,7 +119,7 @@ function ListNode(val) {
      carryOver = Math.floor(sum / 10);
      result.next = new ListNode(sum % 10);
      result = result.next;
-       
+
      if (l1 != null) l1 = l1.next;
      if (l2 != null) l2 = l2.next;
 
@@ -131,3 +131,97 @@ function ListNode(val) {
    return final.next;
 
  };
+
+// ---------------------------------------------------------------------
+
+// Given a string, find the length of the longest substring without repeating characters.
+//
+// Examples:
+//
+// Given "abcabcbb", the answer is "abc", which the length is 3.
+//
+// Given "bbbbb", the answer is "b", with the length of 1.
+//
+// Given "pwwkew", the answer is "wke", with the length of 3. Note that the answer must be a substring, "pwke" is a subsequence and not a substring.
+//
+
+
+// ---------------------------------------------------------------------
+// Solution 1
+// ---------------------------------------------------------------------
+
+
+var lengthOfLongestSubstring = function(s) {
+ if (s === " ") return 1;
+ let counterhash = {};
+ let arr = [];
+ let count = 0;
+ let maxLength = 0;
+ for(let i=0; i<s.length; i++){
+   if ((count === 0) || (typeof counterhash[s[i]] === 'undefined')) {
+       counterhash[s[i]] = count;
+       arr.push(s[i]);
+       count += 1;
+       if (count > maxLength) maxLength = count;
+   } else {
+       let repeatingIndex = counterhash[s[i]];
+       arr.push(s[i]);
+       arr = arr.slice(repeatingIndex+1);
+       counterhash = {};
+
+       for(let idx = 0; idx < arr.length; idx++){
+         counterhash[arr[idx]] = idx;
+       }
+       count = arr.length;
+
+       if (count > maxLength) maxLength = count;
+   }
+ }
+  return maxLength;
+};
+
+
+// ------------------------------------------------------------------------
+
+// Create a function that takes two or more arrays and returns an array
+// of the symmetric difference (△ or ⊕) of the provided arrays.
+//
+// Given two sets (for example set A = {1, 2, 3} and set B = {2, 3, 4}),
+// the mathematical term "symmetric difference" of two sets is the set of
+// elements which are in either of the two sets, but not in both (A △ B = C = {1, 4}).
+// For every additional symmetric difference you take (say on a set D = {2, 3}),
+// you should get the set with elements which are in either of the two the
+// sets but not both (C △ D = {1, 4} △ {2, 3} = {1, 2, 3, 4}).
+// The resulting array must contain only unique values (no duplicates).
+
+// ---------------------------------------------------------------------
+// Solution 1
+// This solution has time complexity of O(n**3)
+// ---------------------------------------------------------------------
+
+
+
+function sym(args) {
+  let resultHash = {};
+  let array = Array.from(arguments);
+  console.log(array);
+  array.forEach((arr)=> {
+    let uniqueArr = [];
+    arr.forEach((el)=>{
+      if (!uniqueArr.length || !uniqueArr.includes(el)){
+        uniqueArr.push(el);
+      }
+    });
+    uniqueArr.forEach((el)=> {
+      if (typeof resultHash[el] === 'undefined'){
+        resultHash[el] = 1;
+
+      } else {
+        console.log(resultHash[el]);
+        resultHash[el] += 1;
+      }
+    });
+  });
+  let result = Object.keys(resultHash);
+  return  result.filter(el => resultHash[el]%2 !== 0).map(el => parseInt(el));
+}
