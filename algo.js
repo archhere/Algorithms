@@ -364,3 +364,44 @@ function FirstReverse(str) {
 }
 
 // ------------------------------------------------------------------------
+
+// Write a recursive method that takes in a string to search and a key string.
+// Return true if the string contains all of the characters in the key
+// in the same order that they appear in the key.
+//
+// string_include_key?("cadbpc", "abc") => true
+// string_include_key("cba", "abc") => false
+
+function stringIncludeKey(string, key) {
+  if (!key.length) return true;
+  let firstKey = key[0];
+  let firstIndex = string.indexOf(firstKey);
+  if (firstIndex < 0) return false;
+  return stringIncludeKey(string.slice(firstIndex+1),key.slice(1));
+}
+
+// Using recursion and the is_a? method,
+// write an Array#deep_dup method that will perform a "deep" duplication of the interior arrays.
+
+function deepDup(arr) {
+  let result = [];
+  arr.forEach((el) => {
+    if (el.constructor.name === 'Array') {
+      result.push(deepDup(el));
+    } else result.push(el);
+  });
+  return result;
+}
+
+// ------------------------------------------------------------------------
+
+// Return the number of total permutations of the provided string that don't
+// have repeated consecutive letters. Assume that all characters in the provided
+// string are each unique.
+//
+// For example, aab should return 2 because it has 6 total permutations
+// (aab, aab, aba, aba, baa, baa), but only 2 of them (aba and aba) don't
+// have the same letter (in this case a) repeating.
+//
+// Remember to use Read-Search-Ask if you get stuck. Try to pair program.
+// Write your own code.
