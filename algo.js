@@ -395,6 +395,20 @@ function deepDup(arr) {
 
 // ------------------------------------------------------------------------
 
+// Write a recursive method that returns the first "num" factorial numbers.
+// Note that the 1st factorial number is 0!, which equals 1. The 2nd factorial
+// is 1!, the 3rd factorial is 2!, etc.
+
+function factorialsRec(num) {
+  if (num === 0) return [];
+  if (num === 1) return [1];
+  let prevFact = factorialsRec(num-1);
+  return prevFact.concat(prevFact[prevFact.length-1] * (num-1));
+
+}
+
+// ------------------------------------------------------------------------
+
 // Return the number of total permutations of the provided string that don't
 // have repeated consecutive letters. Assume that all characters in the provided
 // string are each unique.
@@ -405,3 +419,26 @@ function deepDup(arr) {
 //
 // Remember to use Read-Search-Ask if you get stuck. Try to pair program.
 // Write your own code.
+
+// -------helper function------
+
+function permutations(str){
+  let array = str.split('');
+  let result = [];
+
+  function perms(arr,temp = []){
+    if(!arr.length) {
+      result.pust(temp);
+    } else {
+      for(let i = 0; i< arr.length; i++){
+        let curr = arr.slice();
+        let nextVal = curr.splice(i,1);
+        perms(curr,temp.concat(nextVal));
+      }
+    }
+    return result;
+  }
+
+  return perms(array);
+
+}
