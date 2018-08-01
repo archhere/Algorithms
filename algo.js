@@ -325,3 +325,42 @@ function solution(N) {
     }
     return binaryGap;
 }
+
+
+// ------------------------------------------------------------------------
+
+
+// Using the JavaScript language, have the function FirstReverse(str) take the
+// str parameter being passed and return the string in reversed order.
+// For example: if the input string is "Hello World and Coders" then your
+// program should return the string sredoC dna dlroW olleH.
+// Sample Test Cases
+// Input:"coderbyte"
+//
+// Output:"etybredoc"
+//
+//
+// Input:"I Love Code"
+//
+// Output:"edoC evoL I"
+
+function FirstReverse(str) {
+
+  // code goes here
+  let result = [];
+  str.split(' ').forEach((char) => {
+      result.unshift(reverse(char));
+  });
+
+  function reverse(char){
+      char = char.split('');
+      for(let i=0; i<char.length/2; i++){
+          [char[i],char[char.length-i-1]] = [char[char.length-i-1],char[i]];
+      }
+      return char.join('');
+  }
+  return result.join(' ');
+
+}
+
+// ------------------------------------------------------------------------
