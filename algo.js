@@ -442,3 +442,31 @@ function permutations(str){
   return perms(array);
 
 }
+
+// ------------------------------------------------------------------------
+
+// There are two sorted arrays nums1 and nums2 of size m and n respectively.
+//
+// Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)).
+//
+// You may assume nums1 and nums2 cannot be both empty.
+
+
+var findMedianSortedArrays = function(nums1, nums2) {
+   let result = [];
+   while (nums1.length && nums2.length) {
+      if (nums1[0] < nums2[0]) {
+          result.push(nums1.shift());
+      } else result.push(nums2.shift());
+   }
+    result = (result.concat(nums1)).concat(nums2);
+    let midIdx = Math.floor(result.length/2);
+    if (result.length % 2 === 0) {
+      return (result[midIdx-1] + result[midIdx])/2;
+    } else {
+      return result[midIdx];
+    }
+};
+
+
+// ------------------------------------------------------------------------
