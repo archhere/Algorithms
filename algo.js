@@ -470,3 +470,42 @@ var findMedianSortedArrays = function(nums1, nums2) {
 
 
 // ------------------------------------------------------------------------
+
+
+// Given a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000.
+//
+// Example 1:
+//
+// Input: "babad"
+// Output: "bab"
+// Note: "aba" is also a valid answer.
+// Example 2:
+//
+// Input: "cbbd"
+// Output: "bb"
+
+// ------------------------------------------------------------------------
+
+// Implementing stacks and queues in Javascript
+
+let stack = function() {
+  this.size = 0;
+  this.storage = {};
+  this.push = function(data){
+    this.storage[this.size] = data;
+    this.size++;
+  };
+
+  this.pop = function(){
+    if(this.size === 0) {
+      return undefined;
+    }
+
+    this.size--;
+    let removed = this.storage[this.size];
+    delete this.storage[this.size];
+    return removed;
+  };
+};
+
+// ------------------------------------------------------------------------
