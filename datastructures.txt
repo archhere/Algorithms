@@ -6,3 +6,12 @@ Dequeuing: Removing a record from a queue. :   pop()
 Queue follows FIFO - First In First Out
 
 We will initialize an empty array and only allow unshift() and pop()
+
+
+Stacks:
+
+Stack follows LIFO - Last In First Out
+
+Enqueing:  Adding a record to a queues  :    push()
+Dequeuing: Removing a record from a queue. :   unshift()
+peek : Top element without removing from the stack
