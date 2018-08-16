@@ -428,7 +428,7 @@ function permutations(str){
 
   function perms(arr,temp = []){
     if(!arr.length) {
-      result.pust(temp);
+      result.push(temp);
     } else {
       for(let i = 0; i< arr.length; i++){
         let curr = arr.slice();

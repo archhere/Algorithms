@@ -1,0 +1,8 @@
+Ways of organizing information with optimal runtime complexity for adding or removing records.
+
+Enqueing:  Adding a record to a queues  :    unshift()
+Dequeuing: Removing a record from a queue. :   pop()
+
+Queue follows FIFO - First In First Out
+
+We will initialize an empty array and only allow unshift() and pop()
