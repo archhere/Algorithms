@@ -15,3 +15,9 @@ Stack follows LIFO - Last In First Out
 Enqueing:  Adding a record to a queues  :    push()
 Dequeuing: Removing a record from a queue. :   unshift()
 peek : Top element without removing from the stack
+
+
+Linked list:
+
+A list of linked nodes. Contains head and a tail.
+Node in a lisked list just has a data and reference to the next node in the chain.
