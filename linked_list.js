@@ -73,6 +73,41 @@ class LinkedList {
     let second = this.head.next;
     this.head = second;
   }
+
+  // removeLast(){
+  //   if (!this.head) return null;
+  //   let currentNode = this.head;
+  //   while (currentNode.next.next){
+  //     this.currentNode = this.currentNode.next;
+  //   }
+  //   this.currentNode.next = null;
+  // }
+
+  removeLast(){
+    let previous = this.head;
+    let nextNode = this.head.next;
+    if (!previous) return;
+    if (!nextNode) {
+      previous.next = null;
+      return;
+    }
+    while(nextNode.next){
+      previous = nextNode;
+      nextNode = nextNode.next;
+    }
+    previous.next = null;
+    return;
+  }
+
+  insertLast(data){
+    let lastNode = this.getLast();
+    let newNode = new Node(data);
+    if (!lastNode){
+      this.head = newNode;
+    } else {
+      this.lastNode.next = newNode;
+    }
+  }
 }
 
 const list = new LinkedList();
