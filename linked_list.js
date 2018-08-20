@@ -105,8 +105,38 @@ class LinkedList {
     if (!lastNode){
       this.head = newNode;
     } else {
-      this.lastNode.next = newNode;
+      lastNode.next = newNode;
     }
+  }
+
+  getAt(integer){
+    if(!this.head) return null;
+    let index = 0;
+    let currentNode = this.head;
+    while (index < integer){
+      if(!currentNode) return null;
+      currentNode = currentNode.next;
+      index++;
+    }
+    return currentNode;
+  }
+
+  removeAt(integer){
+    if(!this.head) return null;
+    if(integer === 0) {
+      this.head = this.head.next;
+      return;
+    } else {
+      let previous = this.getAt(integer-1);
+      if (!previous || !previous.next) return;
+      else{
+        previous.next = previous.next.next;
+        return;
+      }
+    }
+
+
+
   }
 }
 
