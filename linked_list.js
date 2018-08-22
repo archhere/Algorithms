@@ -157,3 +157,59 @@ list.head = new Node(10);
 module.exports = {Node,LinkedList};
 
 // -------------------------------------------------------------------------
+
+// Generators and iterators
+
+function *newlist() {
+  yield 1;
+  yield 2;
+  yield 3;
+  yield 4;
+  yield 5;
+}
+
+const generator = newlist();
+let arr = [];
+for(let n of generator){
+  arr.push(n);
+}
+console.log(arr);
+
+// -------------------------------------------------------------------------
+
+function *numbers(){
+  yield 1;
+  yield 2;
+  yield* morenumbers;
+  yield 6;
+  yield 7;
+}
+
+function *morenumbers(){
+  yield 3;
+  yield 4;
+  yield 5;
+}
+
+const newGen = numbers();
+let result = [];
+for(let n of newGen){
+  result.push(n);
+}
+
+// -------------------------------------------------------------------------
+// find the mid point of a linked list without using the length of the linked list.
+// In our case, if the linked list has an even length, we want to return the earlier value.
+
+function midpoint(linkedlist){
+  let slow = linkedlist.head;
+  let fast = LinkedList.head;
+
+  while(fast.next && fast.next.next){
+    slow = slow.next;
+    fast = fast.next.next;
+  }
+  return slow;
+}
+
+module.exports = midpoint;
