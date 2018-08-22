@@ -236,9 +236,9 @@ function circular(linkedlist){
 
 // Without using size, find the node n nodes from the last node in a linked list
 
-function fromLast(list,n){
-  let slow = list.head;
-  let fast = list.head;
+function fromLast(linkedlist,n){
+  let slow = linkedlist.head;
+  let fast = linkedlist.head;
   while(n > 0) {
     fast = fast.next;
     n--;
@@ -251,3 +251,5 @@ function fromLast(list,n){
   return slow;
 
 }
+
+// -------------------------------------------------------------------------

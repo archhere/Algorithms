@@ -21,3 +21,19 @@ Linked list:
 
 A list of linked nodes. Contains head and a tail.
 Node in a lisked list just has a data and reference to the next node in the chain.
+
+
+Trees:
+
+Tree is completely made of nodes. Each node has a data and also reference to its children.
+We have parent-child relationship as well as sibling relationships in a tree.
+
+Iterating through a tree = tree traversal
+There are different orders of traversal.
+
+Breadth first traversal:
+Left to right
+
+Depth first traversal:
+Get to the bottom of the tree as quickly as possible.
+hit the bottom of the tree and then back up to the next child and so on.
