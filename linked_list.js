@@ -213,3 +213,21 @@ function midpoint(linkedlist){
 }
 
 module.exports = midpoint;
+
+// -------------------------------------------------------------------------
+
+// Given a linked list return true if it is circular and false if it isnt.
+
+function circular(linkedlist){
+  let slow = linkedlist.head;
+  let fast = linkedlist.head.next;
+
+  while(slow.next && slow.next.next){
+    slow = slow.next;
+    fast = fast.next.next;
+    if (slow === fast) {
+      return true;
+    }
+  }
+  return false;
+}
