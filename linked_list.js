@@ -134,9 +134,20 @@ class LinkedList {
         return;
       }
     }
+  }
 
-
-
+  insertAt(integer,data){
+    if(!this.head) {
+      this.head = new Node(data);
+      return;
+    }
+    if(this.integer===0){
+      this.head = new Node(data,this.head);
+      return;
+    }
+    let previous = this.getAt(integer-1) || this.getLast();
+    let newNode = new Node(data,previous.next);
+    previous.next = newNode;
   }
 }
 
