@@ -39,3 +39,6 @@ Get to the bottom of the tree as quickly as possible.
 hit the bottom of the tree and then back up to the next child and so on.
 
 Binary Search tree:  BST
+
+
+How would you design Twitter
