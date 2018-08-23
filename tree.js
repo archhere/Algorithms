@@ -41,10 +41,25 @@ class Tree{
       callback(node);
     }
   }
-
 }
-
-
 // const node = new Node(1);
 // const tree = new Tree();
 // tree.root = node;
+
+// ------------------------------------------------------------------------
+
+function levelWidth(root){
+  let widths = [0];
+  let arr = [root,'s'];
+  while (arr.length>1){
+    let node = arr.shift();
+    if (node === 's'){
+      widths.push(0);
+      arr.push('s');
+    } else {
+      arr.push(...node.children);
+      widths[widths.length-1]++;
+    }
+  }
+  return widths;
+}
